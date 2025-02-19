@@ -63,7 +63,9 @@ class DynamicTypingRecentsStream(RecentsStream):
                             # Default type should be string for all fields
                             property_content['type'].append('string')
 
-                            schema['properties'][property['key']] = property_content
+                            # schema['properties'][property['key']] = property_content
+
+                            schema['properties'][property['name']] = property_content
 
                     # Check for more data is available in next page
                     if 'additional_data' in payload and 'pagination' in payload['additional_data']:
