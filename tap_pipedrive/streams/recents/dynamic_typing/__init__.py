@@ -32,13 +32,13 @@ class DynamicTypingRecentsStream(RecentsStream):
                     payload = fields_response.json() # Verifying response in execute_request
 
                     for property in payload['data']:
-                        if property['key'] not in self.static_fields:
-                            logger.debug(property['key'], property['field_type'], property['mandatory_flag'])
+                        if property['name'] not in self.static_fields:
+                            logger.debug(property['name'], property['field_type'], property['mandatory_flag'])
 
-                            if property['key'] in schema['properties']:
+                            if property['name'] in schema['properties']:
                                 logger.warn('Dynamic property "{}" overrides with type {} existing entry in ' \
                                             'static JSON schema of {} stream.'.format(
-                                                property['key'],
+                                                property['name'],
                                                 property['field_type'],
                                                 self.schema
                                             )
